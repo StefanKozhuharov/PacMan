@@ -1,18 +1,16 @@
 body {
-    display: grid;
-    place-items: center;
-    height: 100vh;
     background: #111;
 }
 
 .labyrinth-container {
-    display: flex;
-}
-
-.labyrinth-container .labyrinth-image {
-    width: 640px;
-    height: 710px;
-    background: url('spritesheet.png');
-    background-size: cover;
+    width: 545px;
+    height: 600px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: url(spritesheet.png);
     background-repeat: no-repeat;
+    background-size:cover;
+    clip:rect(0px,545px,600px,0px);
 }
