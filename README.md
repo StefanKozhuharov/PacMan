@@ -13,3 +13,4 @@
 
 * Added the labyrinth w/ the dots w/ the help of CSS  
 * Added the costume of the PacMan in the middle of the labyrinth
+* Added movement to the PacMan, but couldn't make it possible with arrow keys for now
