@@ -11,4 +11,5 @@
 
 # 15 March
 
-* Added teh labyrinth w/ the dots w/ the help of CSS  
+* Added the labyrinth w/ the dots w/ the help of CSS  
+* Added the costume of the PacMan in the middle of the labyrinth
