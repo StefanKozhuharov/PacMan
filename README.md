@@ -18,3 +18,4 @@
 # 16 March
 
 * Fixed the movement, it's now possible to move with the arrow keys
+* Made the movement more accurate to how the actual game works
