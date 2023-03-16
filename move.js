@@ -1,25 +1,23 @@
 let pacmanElement = document.querySelector(".pacman-container");
 console.log(pacmanElement.style.top)
-window.addEventListener("keypress", (event) => {
-    console.log(event.key)
-    switch (event.key){
-        case 'w':
-            pacmanElement.style.top = increment(pacmanElement.style.top, -1);
+window.addEventListener("keydown", (event) => {
+    switch (event.key) {
+        case 'ArrowUp':
+            pacmanElement.style.top = increment(pacmanElement.style.top, -2)
             break;
-        case 's':
-            pacmanElement.style.top = increment(pacmanElement.style.top, 1);
+        case 'ArrowDown':
+            pacmanElement.style.top = increment(pacmanElement.style.top, 2)
             break;
-        case 'a':
-            pacmanElement.style.left = increment(pacmanElement.style.left, -1);
+        case 'ArrowLeft':
+            pacmanElement.style.top = increment(pacmanElement.style.left, -2)
             break;
-        case 'd':
-            pacmanElement.style.left = increment(pacmanElement.style.left, 1);
+        case 'ArrowRight':
+            pacmanElement.style.top = increment(pacmanElement.style.top, 2)
             break;
     }
 });
-function increment(current, increment){
+function increment(current, increment) {
     current = Number(current.split("px")[0]);
     current += increment;
-    console.log(current);
-    return current+"px";
+    return current + "px";
 }
