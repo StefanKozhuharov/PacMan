@@ -121,7 +121,3 @@ function move() {
 }
 
 move();
-//TOP context.fillRect(Number(pacmanElement.style.left.split("px")[0])-16, Number(pacmanElement.style.top.split("px")[0])-20, 32, 4);
-//BOTTOM context.fillRect(Number(pacmanElement.style.left.split("px")[0])-16, Number(pacmanElement.style.top.split("px")[0])+16, 32, 4);
-//LEFT context.fillRect(Number(pacmanElement.style.left.split("px")[0])-20, Number(pacmanElement.style.top.split("px")[0])-16, 4, 32);
-//RIGHT context.fillRect(Number(pacmanElement.style.left.split("px")[0])+16, Number(pacmanElement.style.top.split("px")[0])-16, 4, 32);
