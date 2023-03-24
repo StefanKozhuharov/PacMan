@@ -68,6 +68,19 @@ function move() {
         }
         if (up) {
             pacmanElement.style.top = increment(pacmanElement.style.top, -4)
+            imgd = context.getImageData(Number(pacmanElement.style.left.split("px")[0]) - 16, Number(pacmanElement.style.top.split("px")[0]) - 16, 30, 30);
+            pix = imgd.data;
+            for (var i = 0; i < pix.length; i += 4) {
+                if (pix[i] >= 28 &&
+                    (pix[i + 1] >= 20 && pix[i + 1] <= 190) &&
+                    (pix[i + 2] >= 19 && pix[i + 2] <= 190) &&
+                    pix[i + 3] > 0) {
+                    pix[i] = 0;
+                    pix[i + 1] = 0;
+                    pix[i + 2] = 0;
+                    context.putImageData(imgd, Number(pacmanElement.style.left.split("px")[0]) - 16, Number(pacmanElement.style.top.split("px")[0]) - 16);
+                }
+            }
         }
     }
     else if (down) {
@@ -83,6 +96,19 @@ function move() {
         }
         if (down) {
             pacmanElement.style.top = increment(pacmanElement.style.top, 4)
+            imgd = context.getImageData(Number(pacmanElement.style.left.split("px")[0]) - 16, Number(pacmanElement.style.top.split("px")[0]) - 16, 30, 30);
+            pix = imgd.data;
+            for (var i = 0; i < pix.length; i += 4) {
+                if (pix[i] >= 28 &&
+                    (pix[i + 1] >= 20 && pix[i + 1] <= 190) &&
+                    (pix[i + 2] >= 19 && pix[i + 2] <= 190) &&
+                    pix[i + 3] > 0) {
+                    pix[i] = 0;
+                    pix[i + 1] = 0;
+                    pix[i + 2] = 0;
+                    context.putImageData(imgd, Number(pacmanElement.style.left.split("px")[0]) - 16, Number(pacmanElement.style.top.split("px")[0]) - 16);
+                }
+            }
         }
     }
     else if (left) {
@@ -98,6 +124,19 @@ function move() {
         }
         if (left) {
             pacmanElement.style.left = increment(pacmanElement.style.left, -4)
+            imgd = context.getImageData(Number(pacmanElement.style.left.split("px")[0]) - 16, Number(pacmanElement.style.top.split("px")[0]) - 16, 30, 30);
+            pix = imgd.data;
+            for (var i = 0; i < pix.length; i += 4) {
+                if (pix[i] >= 28 &&
+                    (pix[i + 1] >= 20 && pix[i + 1] <= 190) &&
+                    (pix[i + 2] >= 19 && pix[i + 2] <= 190) &&
+                    pix[i + 3] > 0) {
+                    pix[i] = 0;
+                    pix[i + 1] = 0;
+                    pix[i + 2] = 0;
+                    context.putImageData(imgd, Number(pacmanElement.style.left.split("px")[0]) - 16, Number(pacmanElement.style.top.split("px")[0]) - 16);
+                }
+            }
         }
     }
     else if (right) {
@@ -114,6 +153,19 @@ function move() {
         }
         if (right) {
             pacmanElement.style.left = increment(pacmanElement.style.left, 4)
+            imgd = context.getImageData(Number(pacmanElement.style.left.split("px")[0]) - 16, Number(pacmanElement.style.top.split("px")[0]) - 16, 30, 30);
+            pix = imgd.data;
+            for (var i = 0; i < pix.length; i += 4) {
+                if (pix[i] >= 28 &&
+                    (pix[i + 1] >= 20 && pix[i + 1] <= 190) &&
+                    (pix[i + 2] >= 19 && pix[i + 2] <= 190) &&
+                    pix[i + 3] > 0) {
+                    pix[i] = 0;
+                    pix[i + 1] = 0;
+                    pix[i + 2] = 0;
+                    context.putImageData(imgd, Number(pacmanElement.style.left.split("px")[0]) - 16, Number(pacmanElement.style.top.split("px")[0]) - 16);
+                }
+            }
         }
     }
 

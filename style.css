@@ -22,8 +22,8 @@ body {
 }
 
 .pacman-container {
-    width: 32px;
-    height: 32px;
+    width: 30px;
+    height: 30px;
     position: absolute;
     transform: translate(-50%, -50%);
     overflow: hidden;
