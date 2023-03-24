@@ -5,20 +5,23 @@ let left = false;
 let right = false;
 let hasEatenADot = false;
 let points = 0;
+let image_width = 226;
+let pacmanSize = 30;
+let speed = 8;
 var canvas = document.getElementById('labyrinth-image');
 var context = canvas.getContext('2d');
 var image = new Image();
 image.src = 'spritesheet.png';
 image.crossOrigin = 'anonymous';
 image.onload = function () {
-    var hRatio = canvas.width / 226;
+    var hRatio = canvas.width / image_width ;
     var vRatio = canvas.height / image.height;
     var ratio = Math.min(hRatio, vRatio);
-    var centerShift_x = (canvas.width - 226 * ratio) / 2;
+    var centerShift_x = (canvas.width - image_width  * ratio) / 2;
     var centerShift_y = (canvas.height - image.height * ratio) / 2;
     context.clearRect(0, 0, canvas.width, canvas.height);
-    context.drawImage(image, 0, 0, 226, image.height,
-        centerShift_x, centerShift_y, 226 * ratio, image.height * ratio);
+    context.drawImage(image, 0, 0, image_width , image.height,
+        centerShift_x, centerShift_y, image_width  * ratio, image.height * ratio);
 }
 
 window.addEventListener("keydown", (event) => {
@@ -58,7 +61,7 @@ function increment(current, increment) {
 
 function move() {
     if (up) {
-        var imgd = context.getImageData(Number(pacmanElement.style.left.split("px")[0]) - 16, Number(pacmanElement.style.top.split("px")[0]) - 20, 32, 4);
+        var imgd = context.getImageData(Number(pacmanElement.style.left.split("px")[0]) - (pacmanSize/2), Number(pacmanElement.style.top.split("px")[0]) - (pacmanSize/2+speed), pacmanSize, speed);
         var pix = imgd.data;
         for (var i = 0; i < pix.length; i += 4) {
             if ((pix[i] >= 10 && pix[i] <= 33) &&
@@ -69,8 +72,8 @@ function move() {
             }
         }
         if (up) {
-            pacmanElement.style.top = increment(pacmanElement.style.top, -4)
-            imgd = context.getImageData(Number(pacmanElement.style.left.split("px")[0]) - 16, Number(pacmanElement.style.top.split("px")[0]) - 16, 30, 30);
+            pacmanElement.style.top = increment(pacmanElement.style.top, -speed)
+            imgd = context.getImageData(Number(pacmanElement.style.left.split("px")[0]) - (pacmanSize/2), Number(pacmanElement.style.top.split("px")[0]) - (pacmanSize/2), pacmanSize, pacmanSize);
             pix = imgd.data;
             for (var i = 0; i < pix.length; i += 4) {
                 if (pix[i] >= 28 &&
@@ -80,7 +83,7 @@ function move() {
                     pix[i] = 0;
                     pix[i + 1] = 0;
                     pix[i + 2] = 0;
-                    context.putImageData(imgd, Number(pacmanElement.style.left.split("px")[0]) - 16, Number(pacmanElement.style.top.split("px")[0]) - 16);
+                    context.putImageData(imgd, Number(pacmanElement.style.left.split("px")[0]) - (pacmanSize/2), Number(pacmanElement.style.top.split("px")[0]) - (pacmanSize/2));
                     hasEatenADot = true;
                 }
             }
@@ -92,7 +95,7 @@ function move() {
         }
     }
     else if (down) {
-        var imgd = context.getImageData(Number(pacmanElement.style.left.split("px")[0]) - 16, Number(pacmanElement.style.top.split("px")[0]) + 16, 32, 4);
+        var imgd = context.getImageData(Number(pacmanElement.style.left.split("px")[0]) - (pacmanSize/2), Number(pacmanElement.style.top.split("px")[0]) + (pacmanSize/2), pacmanSize, speed);
         var pix = imgd.data;
         for (var i = 0; i < pix.length; i += 4) {
             if ((pix[i] >= 10 && pix[i] <= 33) &&
@@ -103,8 +106,8 @@ function move() {
             }
         }
         if (down) {
-            pacmanElement.style.top = increment(pacmanElement.style.top, 4)
-            imgd = context.getImageData(Number(pacmanElement.style.left.split("px")[0]) - 16, Number(pacmanElement.style.top.split("px")[0]) - 16, 30, 30);
+            pacmanElement.style.top = increment(pacmanElement.style.top, speed)
+            imgd = context.getImageData(Number(pacmanElement.style.left.split("px")[0]) - (pacmanSize/2), Number(pacmanElement.style.top.split("px")[0]) - (pacmanSize/2), pacmanSize, pacmanSize);
             pix = imgd.data;
             for (var i = 0; i < pix.length; i += 4) {
                 if (pix[i] >= 28 &&
@@ -114,7 +117,7 @@ function move() {
                     pix[i] = 0;
                     pix[i + 1] = 0;
                     pix[i + 2] = 0;
-                    context.putImageData(imgd, Number(pacmanElement.style.left.split("px")[0]) - 16, Number(pacmanElement.style.top.split("px")[0]) - 16);
+                    context.putImageData(imgd, Number(pacmanElement.style.left.split("px")[0]) - (pacmanSize/2), Number(pacmanElement.style.top.split("px")[0]) - (pacmanSize/2));
                     hasEatenADot = true;
                 }
             }
@@ -126,7 +129,7 @@ function move() {
         }
     }
     else if (left) {
-        var imgd = context.getImageData(Number(pacmanElement.style.left.split("px")[0]) - 20, Number(pacmanElement.style.top.split("px")[0]) - 16, 4, 32);
+        var imgd = context.getImageData(Number(pacmanElement.style.left.split("px")[0]) - (pacmanSize/2+speed), Number(pacmanElement.style.top.split("px")[0]) - (pacmanSize/2), speed, pacmanSize);
         var pix = imgd.data;
         for (var i = 0; i < pix.length; i += 4) {
             if ((pix[i] >= 10 && pix[i] <= 33) &&
@@ -137,8 +140,8 @@ function move() {
             }
         }
         if (left) {
-            pacmanElement.style.left = increment(pacmanElement.style.left, -4)
-            imgd = context.getImageData(Number(pacmanElement.style.left.split("px")[0]) - 16, Number(pacmanElement.style.top.split("px")[0]) - 16, 30, 30);
+            pacmanElement.style.left = increment(pacmanElement.style.left, -speed)
+            imgd = context.getImageData(Number(pacmanElement.style.left.split("px")[0]) - (pacmanSize/2), Number(pacmanElement.style.top.split("px")[0]) - (pacmanSize/2), pacmanSize, pacmanSize);
             pix = imgd.data;
             for (var i = 0; i < pix.length; i += 4) {
                 if (pix[i] >= 28 &&
@@ -148,7 +151,7 @@ function move() {
                     pix[i] = 0;
                     pix[i + 1] = 0;
                     pix[i + 2] = 0;
-                    context.putImageData(imgd, Number(pacmanElement.style.left.split("px")[0]) - 16, Number(pacmanElement.style.top.split("px")[0]) - 16);
+                    context.putImageData(imgd, Number(pacmanElement.style.left.split("px")[0]) - (pacmanSize/2), Number(pacmanElement.style.top.split("px")[0]) - (pacmanSize/2));
                     hasEatenADot = true;
                 }
             }
@@ -160,7 +163,7 @@ function move() {
         }
     }
     else if (right) {
-        var imgd = context.getImageData(Number(pacmanElement.style.left.split("px")[0]) + 16, Number(pacmanElement.style.top.split("px")[0]) - 16, 4, 32);
+        var imgd = context.getImageData(Number(pacmanElement.style.left.split("px")[0]) + (pacmanSize/2), Number(pacmanElement.style.top.split("px")[0]) - (pacmanSize/2), speed, pacmanSize);
         var pix = imgd.data;
         for (var i = 0; i < pix.length; i += 4) {
             ;
@@ -172,8 +175,8 @@ function move() {
             }
         }
         if (right) {
-            pacmanElement.style.left = increment(pacmanElement.style.left, 4)
-            imgd = context.getImageData(Number(pacmanElement.style.left.split("px")[0]) - 16, Number(pacmanElement.style.top.split("px")[0]) - 16, 30, 30);
+            pacmanElement.style.left = increment(pacmanElement.style.left, speed)
+            imgd = context.getImageData(Number(pacmanElement.style.left.split("px")[0]) - (pacmanSize/2), Number(pacmanElement.style.top.split("px")[0]) - (pacmanSize/2), pacmanSize, pacmanSize);
             pix = imgd.data;
             for (var i = 0; i < pix.length; i += 4) {
                 if (pix[i] >= 28 &&
@@ -183,7 +186,7 @@ function move() {
                     pix[i] = 0;
                     pix[i + 1] = 0;
                     pix[i + 2] = 0;
-                    context.putImageData(imgd, Number(pacmanElement.style.left.split("px")[0]) - 16, Number(pacmanElement.style.top.split("px")[0]) - 16);
+                    context.putImageData(imgd, Number(pacmanElement.style.left.split("px")[0]) - (pacmanSize/2), Number(pacmanElement.style.top.split("px")[0]) - (pacmanSize/2));
                     hasEatenADot = true;
                 }
             }
