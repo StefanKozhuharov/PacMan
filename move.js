@@ -3,6 +3,8 @@ let up = false;
 let down = false;
 let left = false;
 let right = false;
+let hasEatenADot = false;
+let points = 0;
 var canvas = document.getElementById('labyrinth-image');
 var context = canvas.getContext('2d');
 var image = new Image();
@@ -79,7 +81,13 @@ function move() {
                     pix[i + 1] = 0;
                     pix[i + 2] = 0;
                     context.putImageData(imgd, Number(pacmanElement.style.left.split("px")[0]) - 16, Number(pacmanElement.style.top.split("px")[0]) - 16);
+                    hasEatenADot = true;
                 }
+            }
+            if (hasEatenADot) {
+                points += 10;
+                document.getElementById('points').innerHTML = "Points: " + points;
+                hasEatenADot = false;
             }
         }
     }
@@ -107,7 +115,13 @@ function move() {
                     pix[i + 1] = 0;
                     pix[i + 2] = 0;
                     context.putImageData(imgd, Number(pacmanElement.style.left.split("px")[0]) - 16, Number(pacmanElement.style.top.split("px")[0]) - 16);
+                    hasEatenADot = true;
                 }
+            }
+            if (hasEatenADot) {
+                points += 10;
+                document.getElementById('points').innerHTML = "Points: " + points;
+                hasEatenADot = false;
             }
         }
     }
@@ -135,7 +149,13 @@ function move() {
                     pix[i + 1] = 0;
                     pix[i + 2] = 0;
                     context.putImageData(imgd, Number(pacmanElement.style.left.split("px")[0]) - 16, Number(pacmanElement.style.top.split("px")[0]) - 16);
+                    hasEatenADot = true;
                 }
+            }
+            if (hasEatenADot) {
+                points += 10;
+                document.getElementById('points').innerHTML = "Points: " + points;
+                hasEatenADot = false;
             }
         }
     }
@@ -164,7 +184,13 @@ function move() {
                     pix[i + 1] = 0;
                     pix[i + 2] = 0;
                     context.putImageData(imgd, Number(pacmanElement.style.left.split("px")[0]) - 16, Number(pacmanElement.style.top.split("px")[0]) - 16);
+                    hasEatenADot = true;
                 }
+            }
+            if (hasEatenADot) {
+                points += 10;
+                document.getElementById('points').innerHTML = "Points: " + points;
+                hasEatenADot = false;
             }
         }
     }
